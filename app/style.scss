@@ -1,8 +1,24 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+$font-primary: sans-serif;
+$color-primary: #648;
 
 body {
-  font: 100% $font-stack;
-  color: $primary-color;
+  font-family: $font-primary;
+  color: $color-primary;
 }
 
+#button,
+form {
+  display: inline-block;
+}
+
+h2 {
+  color: $color-primary;
+}
+
+#button {
+  background: $color-primary;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}

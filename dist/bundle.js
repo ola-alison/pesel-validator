@@ -1,1 +1,96 @@
-!function(r){function t(n){if(e[n])return e[n].exports;var o=e[n]={exports:{},id:n,loaded:!1};return r[n].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var e={};return t.m=r,t.c=e,t.p="",t(0)}([function(r,t,e){"use strict";function n(r,t){var e={};for(var n in r)t.indexOf(n)>=0||Object.prototype.hasOwnProperty.call(r,n)&&(e[n]=r[n]);return e}var o=Object.assign||function(r){for(var t=1;t<arguments.length;t++){var e=arguments[t];for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(r[n]=e[n])}return r};e(1);var a={x:1,y:2,a:3,b:4},c=a.x,u=a.y,i=n(a,["x","y"]),p=o({x:c,y:u},i);10===Object.keys(p).map(function(r){return p[r]}).reduce(function(r,t){return r+t})&&document.querySelector("#app").insertAdjacentHTML("afterbegin","<h1>works.</h1>")},function(r,t){}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+	// 'use strict';
+	// import './style.scss';
+
+	document.addEventListener('DOMContentLoaded', function(){
+
+	  document.getElementById("button").onclick = function checkPesel() {
+
+	    let pesel = document.getElementById("pesel").value.split("").map(Number);
+	    let control = ((pesel[0] + pesel[1]*3 + pesel[2]*7 + pesel[3]*9 + pesel[4] + pesel[5] * 3 + pesel[6] * 7 + pesel[7] * 9 + pesel[8] + pesel[9] * 3 + pesel[10]) % 10);
+	    let day = pesel[4]*10 + pesel[5];
+	    let month = (pesel[2]%2)*10 + pesel[3];
+	    let year;
+	    let sex;
+
+
+	    if (pesel[2] > 1) {
+	      year = pesel[0]*10 + pesel[1] + 2000;
+	    }
+	    else {
+	      year = pesel[0]*10 + pesel[1] + 1900;
+	    }
+
+
+	    if (pesel[9] % 2 === 0) {
+	      sex = "female";
+	    }
+	    else {
+	      sex = "male";
+	    }
+
+
+	    if (control != 0 || pesel.length != 11) {
+	      alert('incorrect number');
+	      console.log("incorrect", pesel, "day:", day, "month:", month, "year:", year, "sex:", sex);
+	    }
+	    else {
+	      alert('correct number');
+	      console.log("correct", pesel, "day:", day, "month:", month, "year:", year, "sex:", sex);
+	      document.getElementById("year").innerHTML = year;
+	      document.getElementById("month").innerHTML = month;
+	      document.getElementById("day").innerHTML = day;
+	      document.getElementById("sex").innerHTML = sex;
+	    }
+	  }
+
+	}, false);
+
+
+/***/ })
+/******/ ]);
